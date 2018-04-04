@@ -1,5 +1,5 @@
 {
-  "name": "spf-validator",
+  "name": "spf-validator-dns",
   "version": "0.0.1",
   "description": "A Sender Policy Framework validator",
   "main": "index.js",
