@@ -6,6 +6,9 @@
   "scripts": {
     "test": "nodeunit test"
   },
+  "engines": { 
+    "node" : ">=6.3"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pboyd04/spf-validator.git"
