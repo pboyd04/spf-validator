@@ -1,0 +1,30 @@
+{
+  "name": "spf-validator",
+  "version": "0.0.1",
+  "description": "A Sender Policy Framework validator",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodeunit test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pboyd04/spf-validator.git"
+  },
+  "keywords": [
+    "SPF",
+    "email"
+  ],
+  "author": "Patrick Boyd",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/pboyd04/spf-validator/issues"
+  },
+  "homepage": "https://github.com/pboyd04/spf-validator#readme",
+  "dependencies": {
+    "ip-utils": "^2.4.0",
+    "spf-parse": "^1.0.4"
+  },
+  "devDependencies": {
+    "nodeunit": "0.9.0"
+  }
+}
