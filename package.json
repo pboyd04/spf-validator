@@ -1,6 +1,6 @@
 {
   "name": "spf-validator-dns",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Sender Policy Framework validator",
   "main": "index.js",
   "scripts": {
@@ -28,6 +28,6 @@
     "spf-parse": "^1.0.4"
   },
   "devDependencies": {
-    "nodeunit": "0.9.0"
+    "nodeunit": "^0.11.0"
   }
 }
