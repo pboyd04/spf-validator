@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/pboyd04/spf-validator.svg?branch=master)](https://travis-ci.org/pboyd04/spf-validator)
 [![Dependency Status](https://david-dm.org/pboyd04/spf-validator.svg)](https://david-dm.org/pboyd04/spf-validator)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a6afa67eca417f6fb7aa/maintainability)](https://codeclimate.com/github/pboyd04/spf-validator/maintainability)
 
 ---
 
