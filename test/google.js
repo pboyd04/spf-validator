@@ -1,49 +1,54 @@
 var spf = require('../index');
+var assert = require('chai').assert;
 
-module.exports.google = function(assert) {
+describe('Google', function(){
+  describe('No Expand', function(){
     let validator = new spf.SPFValidator('google.com');
-    let promise = validator.getRecords();
-    promise.then(function(records) {
-      assert.equal(records.mechanisms.length, 3);
-    }).catch(function(e) {
-      assert.ifError(e);
+    it('Get Records', function(){
+      this.timeout(5000);
+      let promise = validator.getRecords();
+      return promise.then((records) => {
+        assert.equal(records.mechanisms.length, 3);
+      });
     });
-    let promise2 = validator.validateSender('172.217.9.142');
-    promise2.then(function(result) {
-      assert.equal(result, 'SOFTFAIL');
-    }).catch(function(e) {
-      assert.ifError(e);
+    it('Validate by IP', function() {
+      this.timeout(5000);
+      let promise = validator.validateSender('172.217.9.142');
+      return promise.then((result) => {
+        assert.equal(result, 'SOFTFAIL');
+      });
     });
-    let promise3 = validator.validateSender('google.com');
-    promise3.then(function(result) {
-      assert.equal(result, 'SOFTFAIL');
-      assert.done();
-    }).catch(function(e) {
-      assert.ifError(e);
-      assert.done();
+    it('Validate by Domain Name', function() {
+      this.timeout(5000);
+      let promise = validator.validateSender('google.com');
+      return promise.then((result) => {
+        assert.equal(result, 'SOFTFAIL');
+      });
     });
-}
-
-module.exports.googleExpand = function(assert) {
+  });
+  describe('Expand', function(){
     let validator = new spf.SPFValidator({'domain': 'google.com', 'expandIncludes': true});
-    let promise = validator.getRecords();
-    promise.then(function(records) {
-      assert.equal(records.mechanisms.length, 3);
-    }).catch(function(e) {
-      assert.ifError(e);
+    it('Get Records', function(){
+      this.timeout(5000);
+      let promise = validator.getRecords();
+      return promise.then((records) => {
+        assert.equal(records.mechanisms.length, 3);
+      });
     });
-    let promise2 = validator.validateSender('172.217.9.142');
-    promise2.then(function(result) {
-      assert.equal(result, 'PASS');
-    }).catch(function(e) {
-      assert.ifError(e);
+    it('Validate by IP', function() {
+      this.timeout(5000);
+      let promise = validator.validateSender('172.217.9.142');
+      return promise.then((result) => {
+        assert.equal(result, 'PASS');
+      });
     });
-    let promise3 = validator.validateSender('google.com');
-    promise3.then(function(result) {
-      assert.equal(result, 'PASS');
-      assert.done();
-    }).catch(function(e) {
-      assert.ifError(e);
-      assert.done();
+    it('Validate by Domain Name', function() {
+      this.timeout(5000);
+      let promise = validator.validateSender('google.com');
+      return promise.then((result) => {
+        assert.equal(result, 'PASS');
+      });
     });
-}
+  });
+});
+/* vim: set tabstop=2 shiftwidth=2 expandtab: */

@@ -4,10 +4,11 @@
   "description": "A Sender Policy Framework validator",
   "main": "index.js",
   "scripts": {
-    "test": "nodeunit test"
+    "test": "mocha",
+    "generate": "node scripts/generate.js"
   },
-  "engines": { 
-    "node" : ">=6.3"
+  "engines": {
+    "node": ">=6.3"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,10 @@
     "spf-parse": "^1.0.4"
   },
   "devDependencies": {
-    "nodeunit": "^0.11.0"
+    "chai": "^4.2.0",
+    "js-yaml": "^3.12.0",
+    "mocha": "^6.0.1",
+    "nodeunit": "^0.11.0",
+    "request": "2.88.0"
   }
 }
