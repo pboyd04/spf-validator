@@ -26,6 +26,7 @@
   "homepage": "https://github.com/pboyd04/spf-validator#readme",
   "dependencies": {
     "ip-utils": "^2.4.0",
+    "ipaddr.js": "^1.9.0",
     "spf-parse": "^1.0.4"
   },
   "devDependencies": {

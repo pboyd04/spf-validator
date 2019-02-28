@@ -1,7 +1,7 @@
 var request = require('request');
 var yaml = require('js-yaml');
 
-let testFile = "var spf = require('../index').SPFValidator;\nvar assert = require('chai').assert;\n\n";
+let testFile = "var spf = require('../index');\nvar assert = require('chai').assert;\n\n";
 testFile+= "describe('OpenSPF', function(){\n";
 
 function addTestSuite(suiteName, url) {
@@ -17,9 +17,6 @@ function addTestSuite(suiteName, url) {
         doc+= "    describe('"+docs[i].description+"', function(){\n";
         for(let testName in docs[i].tests) {
           let test = docs[i].tests[testName];
-          if(test.description !== undefined) {
-            testName = test.description;
-          }
           testName = testName.replace(/'/g, '"');
           testName = testName.replace(/\n/g, ' ');
           doc+= "      it('"+testName.trim()+"', function(){\n";
@@ -28,8 +25,8 @@ function addTestSuite(suiteName, url) {
           doc+= "        if(emailSplit.length < 2) {\n";
           doc+= "          return Promise.resolve();\n";
           doc+= "        }\n";
-          doc+= "        let validator = new spf({domain: emailSplit[1], expandInclude: true, fakeDNSData: "+JSON.stringify(docs[i].zonedata)+", failOnNoFake: true});\n";
-          doc+= "        let promise = validator.validateSender('"+test.host+"');\n";
+          doc+= "        let opts = {fakeDNSData: "+JSON.stringify(docs[i].zonedata)+", failOnNoFake: true}\n";
+          doc+= "        let promise = spf.check_host('"+test.host+"', emailSplit[1], email, opts);\n";
           doc+= "        return promise.then((result) => {\n";
           if(Array.isArray(test.result)) {
             doc+= "          assert.include("+JSON.stringify(test.result)+", result.toLowerCase());\n";
