@@ -25,7 +25,7 @@ function addTestSuite(suiteName, url) {
           doc+= "        if(emailSplit.length < 2) {\n";
           doc+= "          return Promise.resolve();\n";
           doc+= "        }\n";
-          doc+= "        let opts = {fakeDNSData: "+JSON.stringify(docs[i].zonedata)+", failOnNoFake: true}\n";
+          doc+= "        let opts = {fakeDNSData: "+JSON.stringify(docs[i].zonedata)+", failOnNoFake: true, helo: \""+test.helo+"\"}\n";
           doc+= "        let promise = spf.check_host('"+test.host+"', emailSplit[1], email, opts);\n";
           doc+= "        return promise.then((result) => {\n";
           if(Array.isArray(test.result)) {
